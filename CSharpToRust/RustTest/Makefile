@@ -2,9 +2,9 @@
 default: libtest.so
 
 libtest.so: 
-	rustc --dylib -o libtest.so test.rs
-	cp ../RustCSharpTest/bin/
+	rustc --dylib test.rs
+	cp libtest*.so ../RustCsharpTest/bin/libtest.so
 
 clean: 
-	rm -f libtest.so ../RustCSharpTest/bin/libtest.so
+	rm -f libtest.so ../RustCsharpTest/bin/libtest.so
 

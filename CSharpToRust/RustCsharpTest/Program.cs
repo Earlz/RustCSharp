@@ -3,14 +3,22 @@ using System.Runtime.InteropServices;
 
 namespace RustCsharpTest
 {
-    class MainClass
+    static class RustExports
     {
         [DllImport ("libtest.so")]
-        private static extern void foorust();
+        public static extern void foorust();
+        [DllImport("libtest.so")]
+        public static extern int rust_add(int op1, int op2);
+
+    }
+
+    class MainClass
+    {
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World C#!");
-            foorust();
+            RustExports.foorust();
+            Console.WriteLine("10+5000={0}", RustExports.rust_add(10, 5000));
             Console.WriteLine("Done!");
             Console.ReadKey();
         }
